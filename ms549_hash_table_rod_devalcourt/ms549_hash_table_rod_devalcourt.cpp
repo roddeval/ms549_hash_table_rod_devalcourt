@@ -103,11 +103,11 @@ void LinearProbing()
 
 void Chained()
 {
-    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
+    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
-    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
+    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
 
-    int limit = 10000;
+    int limit = 100;
 
     fstream file;
     file.open(pathFile, ios::in);
@@ -206,8 +206,8 @@ void Chained()
 void DoubleHash()
 {
 
-    // string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
-    // string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
+    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
+    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
     string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
 
     int limit = 10000;
@@ -263,7 +263,11 @@ void DoubleHash()
 
         cout << endl;
 
-        value = 17535;
+        value = 17519;
+        ht->Remove(value);
+        ht->Display();
+
+        value = 17539;
         cout << "looking for: " << value << endl;
         hn = ht->Retrieve(value);
         if (hn != NULL)

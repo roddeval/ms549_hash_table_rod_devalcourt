@@ -233,13 +233,13 @@ void DoubleHashedHashTable::Initialize(int size)
 int DoubleHashedHashTable::Hash1(int k, int s)
 {
 	int result = 0;
-	result = k % s;
+	result = (k % s);
 	return result;
 }
 int DoubleHashedHashTable::Hash2(int k, int s)
 {
 	int result = 0;
-	result = (k * s - 1) %s;
+	result = ((k * s - 1) %s);
 	return result;
 }
 
@@ -273,11 +273,11 @@ void DoubleHashedHashTable::Display()
 		value = table->tab[i].e;
 		if (!value)
 		{
-			cout << "Position: " << i + 1 << " element: NULL" << endl;
+			cout << "Position: " << i << " element: NULL" << endl;
 		}
 		else
 		{
-			cout << "Position: " << i + 1 << " element: " << value << endl;
+			cout << "Position: " << i << " element: " << value << endl;
 		}
 	}
 }
@@ -287,33 +287,44 @@ HashNode* DoubleHashedHashTable::Retrieve(int searchFor)
 	HashNode* hn = NULL;
 	int result = 0;
 	int value = 0;
-	int hashValue = Hash1(searchFor, table->s);
-	int stepSize = Hash2(searchFor, table->s);
+	int hashValue = SearchKey(searchFor);
 
 	for (int i = 0; i < table->s; i++)
 	{
 		hashValue = Hash1(i, table->s);
-		stepSize = Hash2(i, table->s);
 
 		value = table->tab[hashValue].e;
 		if (searchFor == value)
 		{
-			hn = new HashNode(hashValue+1, value);
+			hn = new HashNode(hashValue, value);
 			return hn;
 		}
-		else
-		{
-			value = table->tab[stepSize].e;
-			if (searchFor == value)
-			{
-				hn = new HashNode(stepSize+1, value);
-				return hn;
-			}
 
-		}
 	}
 	hn = new HashNode(-1, -1);
 	return hn;
+}
+
+void DoubleHashedHashTable::Remove(int value)
+{
+	int result = 0;
+	int value2 = 0;
+	int hashValue = SearchKey(value);
+
+	for (int i = 0; i < table->s; i++)
+	{
+		hashValue = Hash1(i, table->s);
+
+		value2 = table->tab[hashValue].e;
+		if (value2 == value)
+		{
+			cout << "Removed value: " << value2 << endl;
+			table->tab[hashValue].e = NULL;
+
+		}
+
+	}
+
 }
 
 void DoubleHashedHashTable::ReHash()

@@ -79,6 +79,7 @@ class DoubleHashedHashTable
 		DLLHashTable_API void Insert(int k);
 		DLLHashTable_API void Display();
 		DLLHashTable_API HashNode* Retrieve(int searchFor);
+		DLLHashTable_API void Remove(int value);
 		DLLHashTable_API void ReHash();
 		Table* table;
 private:
