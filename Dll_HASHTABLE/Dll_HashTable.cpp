@@ -190,3 +190,145 @@ void LinearProbingHashTable::Display()
 	}
 }
 
+DoubleHashedHashTable::DoubleHashedHashTable(int size)
+{
+	Initialize(size);
+}
+void DoubleHashedHashTable::Initialize(int size)
+{
+	Table* t = NULL;
+	if (size < maxSize)
+	{
+		cout << "Table size is too small!" << endl;
+	}
+	else
+	{
+		t = new Table();
+		if (t == NULL)
+		{
+			cout << "out of space!" << endl;
+		}
+		else
+		{
+			t->s = size;
+			t->tab = new Entry[t->s];
+
+			if (t->tab == NULL)
+			{
+				cout << "table is NULL" << endl;
+			}
+			else
+			{
+				for (int i = 0; i < t->s; i++)
+				{
+					t->tab[i].info = Emp;
+					t->tab[i].e = NULL;
+				}
+				table = t;
+			}
+		}
+	}
+}
+
+int DoubleHashedHashTable::Hash1(int k, int s)
+{
+	int result = 0;
+	result = k % s;
+	return result;
+}
+int DoubleHashedHashTable::Hash2(int k, int s)
+{
+	int result = 0;
+	result = (k * s - 1) %s;
+	return result;
+}
+
+int DoubleHashedHashTable::SearchKey(int k)
+{
+	int hashValue = Hash1(k, table->s);
+	int stepSize = Hash2(k, table->s);
+	while ((table->tab[hashValue].info != Emp) && (table->tab[hashValue].e != k))
+	{
+		hashValue = hashValue + stepSize;
+		hashValue = hashValue % table->s;
+	}
+	return hashValue;
+}
+
+void DoubleHashedHashTable::Insert(int k)
+{
+	int pos = SearchKey(k);
+	if (table->tab[pos].info != Legi)
+	{
+		table->tab[pos].info = Legi;
+		table->tab[pos].e = k;
+	}
+		
+}
+void DoubleHashedHashTable::Display()
+{
+	int value = 0;
+	for (int i = 0; i < table->s; i++)
+	{
+		value = table->tab[i].e;
+		if (!value)
+		{
+			cout << "Position: " << i + 1 << " element: NULL" << endl;
+		}
+		else
+		{
+			cout << "Position: " << i + 1 << " element: " << value << endl;
+		}
+	}
+}
+
+HashNode* DoubleHashedHashTable::Retrieve(int searchFor)
+{
+	HashNode* hn = NULL;
+	int result = 0;
+	int value = 0;
+	int hashValue = Hash1(searchFor, table->s);
+	int stepSize = Hash2(searchFor, table->s);
+
+	for (int i = 0; i < table->s; i++)
+	{
+		hashValue = Hash1(i, table->s);
+		stepSize = Hash2(i, table->s);
+
+		value = table->tab[hashValue].e;
+		if (searchFor == value)
+		{
+			hn = new HashNode(hashValue+1, value);
+			return hn;
+		}
+		else
+		{
+			value = table->tab[stepSize].e;
+			if (searchFor == value)
+			{
+				hn = new HashNode(stepSize+1, value);
+				return hn;
+			}
+
+		}
+	}
+	hn = new HashNode(-1, -1);
+	return hn;
+}
+
+void DoubleHashedHashTable::ReHash()
+{
+	int s = table->s;
+	Entry* t = table->tab;
+
+	Initialize(s * 2);
+
+	for (int i = 0; i < s; i++)
+	{
+		if (t[i].info == Legi)
+		{
+			Insert(t[i].e);
+		}
+	}
+	delete t;
+}

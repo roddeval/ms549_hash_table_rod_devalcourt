@@ -54,3 +54,33 @@ class LinearProbingHashTable
 		int mnSize;
 		HashNode* dummy;
 };
+
+enum EntryType {Legi, Emp};
+struct Entry
+{
+	int e;
+	enum EntryType info;
+};
+
+struct Table
+{
+	int s;
+	Entry* tab;
+};
+
+class DoubleHashedHashTable
+{
+	public:
+		DLLHashTable_API DoubleHashedHashTable(int size);
+		DLLHashTable_API void Initialize(int size);
+		DLLHashTable_API int Hash1(int k, int s);
+		DLLHashTable_API int Hash2(int k, int s);
+		DLLHashTable_API int SearchKey(int k);
+		DLLHashTable_API void Insert(int k);
+		DLLHashTable_API void Display();
+		DLLHashTable_API HashNode* Retrieve(int searchFor);
+		DLLHashTable_API void ReHash();
+		Table* table;
+private:
+		int maxSize;
+};

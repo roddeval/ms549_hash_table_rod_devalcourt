@@ -2,6 +2,8 @@ cd "C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\x64\Deb
 ms549_hash_table_rod_devalcourt.exe 
 
 ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_chained_100.txt
+ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_chained_1000.txt
+ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_chained_10000.txt
 
 
 C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\HashTable

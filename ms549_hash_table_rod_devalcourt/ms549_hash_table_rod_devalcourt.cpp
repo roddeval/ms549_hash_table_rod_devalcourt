@@ -203,10 +203,116 @@ void Chained()
 
 }
 
+void DoubleHash()
+{
+
+    // string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
+    // string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
+    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
+
+    int limit = 10000;
+
+    fstream file;
+    file.open(pathFile, ios::in);
+    string line = "";
+    std::string::size_type sz;
+    int value = 0;
+
+    SYSTEMTIME st;
+    SYSTEMTIME stopTime;
+    SYSTEMTIME abc;
+    std::stringstream ssStart;
+    std::stringstream ssStop;
+    std::stringstream ssElapsed;
+    string timeString;
+    string timeString2;
+    string timeString3;
+    FILETIME ft;
+    FILETIME ftStop;
+    FILETIME elapsed;
+
+    ULARGE_INTEGER v_ui;
+    __int64 v_right, v_left, v_res;
+    DoubleHashedHashTable* ht = new DoubleHashedHashTable(limit);
+    // int i = 1;
+    HashNode* hn = NULL;
+    if (file.is_open())
+    {
+
+        cout << limit << " numbers" << endl;
+
+        GetSystemTime(&st);
+        ssStart << st.wMonth << "/" << st.wDay << "/" << st.wYear << " " << st.wHour << ":" << st.wMinute << ":" << st.wSecond << "." << st.wMilliseconds;
+
+        timeString = ssStart.str();
+
+        cout << "start time: " << timeString << endl;
+
+        while (getline(file, line))
+        {
+            value = std::stoi(line, &sz);
+            if (value > ht->table->s)
+            {
+                cout << "table is full!  rehashing the table" << endl;
+                ht->ReHash();
+            }
+            ht->Insert(value);
+        }
+
+        ht->Display();
+
+        cout << endl;
+
+        value = 17535;
+        cout << "looking for: " << value << endl;
+        hn = ht->Retrieve(value);
+        if (hn != NULL)
+        {
+            cout << "key: " << hn->key << " Value: " << hn->value << endl;
+        }
+
+        GetSystemTime(&stopTime);
+        ssStop << stopTime.wMonth << "/" << stopTime.wDay << "/" << stopTime.wYear << " " << stopTime.wHour << ":" << stopTime.wMinute << ":" << stopTime.wSecond << "." << stopTime.wMilliseconds;
+
+        timeString2 = ssStop.str();
+
+        cout << "stop time: " << timeString2 << endl;
+
+
+        SystemTimeToFileTime(&st, &ft);
+        SystemTimeToFileTime(&stopTime, &ftStop);
+
+        v_ui.LowPart = ftStop.dwLowDateTime;
+        v_ui.HighPart = ftStop.dwHighDateTime;
+        v_right = v_ui.QuadPart;
+
+        v_ui.LowPart = ft.dwLowDateTime;
+        v_ui.HighPart = ft.dwHighDateTime;
+        v_left = v_ui.QuadPart;
+
+        v_res = v_right - v_left;
+
+        v_ui.QuadPart = v_res;
+        elapsed.dwLowDateTime = v_ui.LowPart;
+        elapsed.dwHighDateTime = v_ui.HighPart;
+        FileTimeToSystemTime(&elapsed, &abc);
+
+        ssElapsed << abc.wHour << ":" << abc.wMinute << ":" << abc.wSecond << "." << abc.wMilliseconds;
+
+        timeString3 = ssElapsed.str();
+
+        std::cout << "Elapsed time: " << timeString3 << endl;
+
+        file.close();
+
+    }
+
+}
 
 int main()
 {
-    Chained();
+    DoubleHash();
+    //Chained();
     //LinearProbing();
 }
 
