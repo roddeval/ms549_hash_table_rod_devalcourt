@@ -43,7 +43,7 @@ class LinearProbingHashTable
 		DLLHashTable_API void Initialize();
 		DLLHashTable_API int GetHash(int key);
 		DLLHashTable_API HashNode* Insert(int key, int value);
-		DLLHashTable_API int Retrieve(int key);
+		DLLHashTable_API HashNode* Retrieve(int key);
 		DLLHashTable_API int Remove(int key);
 		DLLHashTable_API int sizeOfTable();
 		DLLHashTable_API bool isEmpty();

@@ -41,16 +41,22 @@ void Hash::Insert(int key)
 void Hash::Remove(int key)
 {
 	int hashedKey = GetHash(key);
+	int value = 0;
 	list<int>::iterator i;
 	for (i = table[hashedKey].begin(); i != table[hashedKey].end(); i++)
 	{
 		if (*i == key)
 			break;
 	}
+
 	if (i != table[hashedKey].end())
 	{
+		value = *i;
+		cout << "Removed value: " << value << endl;
+
 		table[hashedKey].erase(i);
 	}
+
 }
 
 void Hash::Display()
@@ -126,8 +132,9 @@ HashNode* LinearProbingHashTable::Insert(int key, int value)
 }
 
 
-int LinearProbingHashTable::Retrieve(int key)
+HashNode* LinearProbingHashTable::Retrieve(int key)
 {
+	HashNode* hn = NULL;
 	int hashIndex = GetHash(key);
 	int counter = 0;
 	while (table[hashIndex] != NULL)
@@ -137,7 +144,8 @@ int LinearProbingHashTable::Retrieve(int key)
 
 		if (table[hashIndex]->key == key)
 		{
-			return table[hashIndex]->value;
+			hn = new HashNode(hashIndex, table[hashIndex]->value);
+			return hn;
 		}
 		hashIndex++;
 		hashIndex %= MAXCAP;
@@ -157,6 +165,7 @@ int LinearProbingHashTable::Remove(int key)
 			temp = table[hashIndex];
 			table[hashIndex] = dummy;
 			mnSize--;
+			cout << "Removed value: " << temp->value << endl;
 			return temp->value;
 		}
 		hashIndex++;

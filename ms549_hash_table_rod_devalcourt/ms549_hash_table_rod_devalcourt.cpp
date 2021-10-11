@@ -22,6 +22,9 @@ void LinearProbing()
     string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
+
+    int limit = 100;
+
     fstream file;
     file.open(pathFile, ios::in);
     string line = "";
@@ -43,11 +46,12 @@ void LinearProbing()
 
     ULARGE_INTEGER v_ui;
     __int64 v_right, v_left, v_res;
+    HashNode* hn = NULL;
 
     if (file.is_open())
     {
 
-        cout << "10000 numbers" << endl;
+        cout << limit << " numbers" << endl;
 
         GetSystemTime(&st);
         ssStart << st.wMonth << "/" << st.wDay << "/" << st.wYear << " " << st.wHour << ":" << st.wMinute << ":" << st.wSecond << "." << st.wMilliseconds;
@@ -63,6 +67,23 @@ void LinearProbing()
         }
 
         ht->Display();
+
+        cout << endl;
+
+        value = 567;
+        ht->Remove(value);
+        ht->Display();
+
+        cout << endl;
+
+        value = 536;
+        cout << "looking for: " << value << endl;
+        hn = ht->Retrieve(value);
+        if (hn != NULL)
+        {
+            cout << "key: " << hn->key << " Value: " << hn->value << endl;
+        }
+
 
         GetSystemTime(&stopTime);
         ssStop << stopTime.wMonth << "/" << stopTime.wDay << "/" << stopTime.wYear << " " << stopTime.wHour << ":" << stopTime.wMinute << ":" << stopTime.wSecond << "." << stopTime.wMilliseconds;
@@ -138,7 +159,7 @@ void Chained()
     if (file.is_open())
     {
 
-        cout << "10000 numbers" << endl;
+        cout << limit << " numbers" << endl;
 
         GetSystemTime(&st);
         ssStart << st.wMonth << "/" << st.wDay << "/" << st.wYear << " " << st.wHour << ":" << st.wMinute << ":" << st.wSecond << "." << st.wMilliseconds;
@@ -157,7 +178,13 @@ void Chained()
         
         cout << endl;
 
-        value = 11023;
+        value = 567;
+        ht->Remove(value);
+        ht->Display();
+
+        cout << endl;
+
+        value = 536;
         cout << "looking for: " << value << endl;
         hn = ht->Retrieve(value);
         if (hn != NULL)
@@ -206,11 +233,11 @@ void Chained()
 void DoubleHash()
 {
 
-    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
+    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
-    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
+    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
 
-    int limit = 10000;
+    int limit = 100;
 
     fstream file;
     file.open(pathFile, ios::in);
@@ -263,11 +290,11 @@ void DoubleHash()
 
         cout << endl;
 
-        value = 17519;
+        value = 567;
         ht->Remove(value);
         ht->Display();
 
-        value = 17539;
+        value = 536;
         cout << "looking for: " << value << endl;
         hn = ht->Retrieve(value);
         if (hn != NULL)
@@ -315,9 +342,16 @@ void DoubleHash()
 
 int main()
 {
+    cout << "chained" << endl;
+
+    Chained();
+
+    cout << "double hash" << endl;
     DoubleHash();
-    //Chained();
-    //LinearProbing();
+
+    cout << "linear probing" << endl;
+
+    LinearProbing();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

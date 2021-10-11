@@ -1,6 +1,8 @@
 cd "C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\x64\Debug"
 ms549_hash_table_rod_devalcourt.exe 
 
+ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\output.txt
+
 ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_double_hashed_100.txt
 ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_double_hashed_1000.txt
 ms549_hash_table_rod_devalcourt.exe > C:\Users\rdeva\source\repos\roddeval\ms549_hash_table_rod_devalcourt\analysis_double_hashed_10000.txt

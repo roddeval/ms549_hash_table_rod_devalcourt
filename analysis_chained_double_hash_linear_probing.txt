@@ -1,0 +1,17 @@
+chained
+100 numbers
+start time: 10/11/2021 18:9:23.469
+stop time: 10/11/2021 18:9:23.472
+Elapsed time: 0:0:0.3
+
+double hash
+100 numbers
+start time: 10/11/2021 18:9:23.472
+stop time: 10/11/2021 18:9:23.515
+Elapsed time: 0:0:0.43
+
+linear probing
+100 numbers
+start time: 10/11/2021 18:9:23.518
+stop time: 10/11/2021 18:9:23.521
+Elapsed time: 0:0:0.3
