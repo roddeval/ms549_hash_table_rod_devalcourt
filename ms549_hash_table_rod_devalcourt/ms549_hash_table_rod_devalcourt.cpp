@@ -104,10 +104,10 @@ void LinearProbing()
 void Chained()
 {
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
-    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
-    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
+    //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
+    string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\10000_numbers.txt";
 
-    int limit = 1000;
+    int limit = 10000;
 
     fstream file;
     file.open(pathFile, ios::in);
@@ -138,7 +138,7 @@ void Chained()
     if (file.is_open())
     {
 
-        cout << "1000 numbers" << endl;
+        cout << "10000 numbers" << endl;
 
         GetSystemTime(&st);
         ssStart << st.wMonth << "/" << st.wDay << "/" << st.wYear << " " << st.wHour << ":" << st.wMinute << ":" << st.wSecond << "." << st.wMilliseconds;
@@ -157,7 +157,7 @@ void Chained()
         
         cout << endl;
 
-        value = 1597;
+        value = 11023;
         cout << "looking for: " << value << endl;
         hn = ht->Retrieve(value);
         if (hn != NULL)
