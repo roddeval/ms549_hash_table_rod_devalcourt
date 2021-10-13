@@ -35,7 +35,7 @@ class Hash
 		// constructor
 		DLLHashTable_API Hash(int size, int debug);
 
-		// initializes memory variables
+		// initializes member variables
 		DLLHashTable_API void Initialize(int size, int debug);
 		
 		// hash method for key's value
@@ -189,7 +189,7 @@ class DoubleHashedHashTable
 		// rehash doubles the size of the hash table it was initialized with
 		DLLHashTable_API void ReHash();
 		
-		// publie member variable that is double hashed.  It uses a struct Table*
+		// public member variable that is double hashed.  It uses a struct Table*
 		Table* table;
 
 	private:

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HashNode">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAEAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hash">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAEAAAAIAAQBAAAAABQAABAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinearProbingHashTable">
+    <Position X="4.25" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIIEAEAAAAIQAQBAAAAABQAAQAAAAAACAAAAAABAQAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoubleHashedHashTable">
+    <Position X="8.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AMIAAEAAAAEAASBAAAAABQAgAAACAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Entry">
+    <Position X="8.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Table">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="EntryType">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Dll_HashTable.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
