@@ -306,10 +306,12 @@ int DoubleHashedHashTable::SearchKey(int k)
 {
 	if (mnDebug == 1)
 		cout << "DoubleHashedHashTable::SearchKey(int " << k << ")" << endl;
-
 	int hashValue = Hash1(k, table->s);
 	int stepSize = Hash2(k, table->s);
-	while ((table->tab[hashValue].info != Emp) && (table->tab[hashValue].e != k))
+	while ( (table->tab[hashValue].info != Emp) && 
+		    (table->tab[hashValue].e != k) &&
+			(table->tab[hashValue].e != NULL)
+		  )
 	{
 		hashValue = hashValue + stepSize;
 		hashValue = hashValue % table->s;
@@ -369,6 +371,11 @@ HashNode* DoubleHashedHashTable::Retrieve(int searchFor)
 		{
 			hn = new HashNode(hashValue, value);
 			return hn;
+		}
+		else
+		{
+			if (table->tab[hashValue].e == NULL)
+				break;
 		}
 
 	}
