@@ -14,18 +14,26 @@ HashNode::HashNode(int key, int value)
 	this->value = value;
 }
 
-Hash::Hash(int size)
+Hash::Hash(int size, int debug)
 {
-	Initialize(size);
+	if (debug == 1)
+		cout << "Hash::Hash(int " << size << ", int " << debug << ")" << endl;
+	Initialize(size, debug);
 }
 
-void Hash::Initialize(int size)
+void Hash::Initialize(int size, int debug)
 {
+	if (debug == 1)
+		cout << "Hash::Initialize(int " << size << ", int " << debug << ")" << endl;
 	this->mnNumIndexes = size;
 	table = new list<int>[mnNumIndexes];
+	mnDebug = debug;
 }
+
 int Hash::GetHash(int key)
 {
+	if (mnDebug == 1)
+		cout << "Hash::GetHash(int " << key << ")" << endl;
 	int result = 0;
 	result = key % this->mnNumIndexes;
 	return result;
@@ -34,12 +42,16 @@ int Hash::GetHash(int key)
 
 void Hash::Insert(int key)
 {
+	if (mnDebug == 1)
+		cout << "Hash::Insert(int " << key << ")" << endl;
 	int hashedKey = GetHash(key);
 	table[hashedKey].push_back(key);
 }
 
 void Hash::Remove(int key)
 {
+	if (mnDebug == 1)
+		cout << "Hash::Remove(int " << key << ")" << endl;
 	int hashedKey = GetHash(key);
 	int value = 0;
 	list<int>::iterator i;
@@ -61,6 +73,8 @@ void Hash::Remove(int key)
 
 void Hash::Display()
 {
+	if (mnDebug == 1)
+		cout << "Hash::Display()" << endl;
 	for (int i = 0; i < mnNumIndexes; i++) {
 		cout << i;
 		for (int x : table[i])
@@ -71,6 +85,8 @@ void Hash::Display()
 
 HashNode* Hash::Retrieve(int key)
 {
+	if (mnDebug == 1)
+		cout << "Hash::Remove(int " << key << ")" << endl;
 	HashNode* hn = new HashNode(-1, -1);
 	int result = 0;
 	int hashedIndex = GetHash(key);
@@ -85,13 +101,19 @@ HashNode* Hash::Retrieve(int key)
 	return hn;
 }
 
-LinearProbingHashTable::LinearProbingHashTable()
+LinearProbingHashTable::LinearProbingHashTable(int debug)
 {
-	Initialize();
+	if (debug == 1)
+		cout << "LinearProbingHashTable::LinearProbingHashTable(int " << debug << ")" << endl;
+
+	Initialize(debug);
 }
 
-void LinearProbingHashTable::Initialize()
+void LinearProbingHashTable::Initialize(int debug)
 {
+	if (debug == 1)
+		cout << "LinearProbingHashTable::Initialize(int " << debug << ")" << endl;
+
 	mnSize = 0;
 	table = new HashNode * [MAXCAP];
 	for (int i = 0; i < MAXCAP; i++)
@@ -99,11 +121,14 @@ void LinearProbingHashTable::Initialize()
 		table[i] = new HashNode(-1, -1);
 	}
 	dummy = new HashNode(-1, -1);
+	mnDebug = debug;
 }
-
 
 int LinearProbingHashTable::GetHash(int key)
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::GetHash(int " << key << ")" << endl;
+
 	int result = 0;
 	result = key % MAXCAP;
 	return result;
@@ -112,6 +137,9 @@ int LinearProbingHashTable::GetHash(int key)
 
 HashNode* LinearProbingHashTable::Insert(int key, int value)
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::Insert(int " << key << ", int " << value << ")" << endl;
+
 	HashNode* temp = new HashNode(key, value);
 	int hashIndex = GetHash(key);
 
@@ -131,9 +159,11 @@ HashNode* LinearProbingHashTable::Insert(int key, int value)
 
 }
 
-
 HashNode* LinearProbingHashTable::Retrieve(int key)
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::Retrieve(int " << key << ")" << endl;
+
 	HashNode* hn = NULL;
 	int hashIndex = GetHash(key);
 	int counter = 0;
@@ -153,9 +183,11 @@ HashNode* LinearProbingHashTable::Retrieve(int key)
 	return NULL;
 }
 
-
 int LinearProbingHashTable::Remove(int key)
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::Remove(int " << key << ")" << endl;
+
 	HashNode* temp = NULL;
 	int hashIndex = GetHash(key);
 	while (table[hashIndex] != NULL)
@@ -175,21 +207,27 @@ int LinearProbingHashTable::Remove(int key)
 	return NULL;
 }
 
-
 int LinearProbingHashTable::sizeOfTable()
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::sizeOfTable()" << endl;
+
 	return mnSize;
 }
 
-
 bool LinearProbingHashTable::isEmpty()
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::isEmpty()" << endl;
+
 	return mnSize == 0;
 }
 
-
 void LinearProbingHashTable::Display()
 {
+	if (mnDebug == 1)
+		cout << "LinearProbingHashTable::Display()" << endl;
+
 	for (int i = 0; i < MAXCAP; i++)
 	{
 		if ((table[i] != NULL) && (table[i]->key != -1))
@@ -199,12 +237,18 @@ void LinearProbingHashTable::Display()
 	}
 }
 
-DoubleHashedHashTable::DoubleHashedHashTable(int size)
+DoubleHashedHashTable::DoubleHashedHashTable(int size, int debug)
 {
-	Initialize(size);
+	if (debug == 1)
+		cout << "DoubleHashedHashTable::DoubleHashedHashTable(int " << size << ", int " << debug << ")" << endl;
+
+	Initialize(size, debug);
 }
-void DoubleHashedHashTable::Initialize(int size)
+void DoubleHashedHashTable::Initialize(int size, int debug)
 {
+	if (debug == 1)
+		cout << "DoubleHashedHashTable::Initialize(int " << size << ", int " << debug << ")" << endl;
+
 	Table* t = NULL;
 	if (size < maxSize)
 	{
@@ -241,12 +285,18 @@ void DoubleHashedHashTable::Initialize(int size)
 
 int DoubleHashedHashTable::Hash1(int k, int s)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Hash1(int " << k << ", int " << s << ")" << endl;
+
 	int result = 0;
 	result = (k % s);
 	return result;
 }
 int DoubleHashedHashTable::Hash2(int k, int s)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Hash2(int " << k << ", int " << s << ")" << endl;
+
 	int result = 0;
 	result = ((k * s - 1) %s);
 	return result;
@@ -254,6 +304,9 @@ int DoubleHashedHashTable::Hash2(int k, int s)
 
 int DoubleHashedHashTable::SearchKey(int k)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::SearchKey(int " << k << ")" << endl;
+
 	int hashValue = Hash1(k, table->s);
 	int stepSize = Hash2(k, table->s);
 	while ((table->tab[hashValue].info != Emp) && (table->tab[hashValue].e != k))
@@ -266,6 +319,9 @@ int DoubleHashedHashTable::SearchKey(int k)
 
 void DoubleHashedHashTable::Insert(int k)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Insert(int " << k << ")" << endl;
+
 	int pos = SearchKey(k);
 	if (table->tab[pos].info != Legi)
 	{
@@ -276,6 +332,9 @@ void DoubleHashedHashTable::Insert(int k)
 }
 void DoubleHashedHashTable::Display()
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Display()" << endl;
+
 	int value = 0;
 	for (int i = 0; i < table->s; i++)
 	{
@@ -293,6 +352,9 @@ void DoubleHashedHashTable::Display()
 
 HashNode* DoubleHashedHashTable::Retrieve(int searchFor)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Retrieve(int " << searchFor << ")" << endl;
+
 	HashNode* hn = NULL;
 	int result = 0;
 	int value = 0;
@@ -316,6 +378,9 @@ HashNode* DoubleHashedHashTable::Retrieve(int searchFor)
 
 void DoubleHashedHashTable::Remove(int value)
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::Remove(int " << value << ")" << endl;
+
 	int result = 0;
 	int value2 = 0;
 	int hashValue = SearchKey(value);
@@ -338,10 +403,13 @@ void DoubleHashedHashTable::Remove(int value)
 
 void DoubleHashedHashTable::ReHash()
 {
+	if (mnDebug == 1)
+		cout << "DoubleHashedHashTable::ReHash()" << endl;
+
 	int s = table->s;
 	Entry* t = table->tab;
 
-	Initialize(s * 2);
+	Initialize(s * 2, mnDebug);
 
 	for (int i = 0; i < s; i++)
 	{

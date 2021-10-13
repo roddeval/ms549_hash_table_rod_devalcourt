@@ -33,10 +33,10 @@ class Hash
 	public:
 
 		// constructor
-		DLLHashTable_API Hash(int size);
+		DLLHashTable_API Hash(int size, int debug);
 
 		// initializes memory variables
-		DLLHashTable_API void Initialize(int size);
+		DLLHashTable_API void Initialize(int size, int debug);
 		
 		// hash method for key's value
 		DLLHashTable_API int GetHash(int key);
@@ -62,6 +62,9 @@ private:
 		// represents how many key/value pairs you would like in the hash table
 		// represented by list<int>* being the value and list<int> * [hashed key] as the value for key
 		int mnNumIndexes;
+
+		// used for a debug flag
+		int mnDebug;
 };
 
 // class LinearProbingHashTable is a linearly probing hash table implementation.
@@ -72,10 +75,10 @@ class LinearProbingHashTable
 	public:
 
 		// constructor
-		DLLHashTable_API LinearProbingHashTable();
+		DLLHashTable_API LinearProbingHashTable(int debug);
 
 		// initializes member variables including the hash table itself
-		DLLHashTable_API void Initialize();
+		DLLHashTable_API void Initialize(int debug);
 
 		// hash method used for the array index of HashNodes
 		DLLHashTable_API int GetHash(int key);
@@ -122,6 +125,9 @@ private:
 		// there wasn't one found in the hashtable by the retrieve method
 		HashNode* dummy;
 
+		// used for a debug flag
+		int mnDebug;
+
 };
 
 // the EntryType values of Legi and Emp are used by the Entry struct that
@@ -154,10 +160,10 @@ class DoubleHashedHashTable
 	public:
 
 		// constructor
-		DLLHashTable_API DoubleHashedHashTable(int size);
+		DLLHashTable_API DoubleHashedHashTable(int size, int debug);
 		
 		// initialize member values
-		DLLHashTable_API void Initialize(int size);
+		DLLHashTable_API void Initialize(int size, int debug);
 		
 		// hash method #1
 		DLLHashTable_API int Hash1(int k, int s);
@@ -192,4 +198,7 @@ class DoubleHashedHashTable
 		// so if you use a rather large number, say 1,000,000 you might end up
 		// with 2,000,000 hashed key value pairs.
 		int maxSize;
+
+		// used for a debug flag
+		int mnDebug;
 };

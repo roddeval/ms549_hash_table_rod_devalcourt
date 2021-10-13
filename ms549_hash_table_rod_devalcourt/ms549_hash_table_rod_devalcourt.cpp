@@ -15,9 +15,9 @@ using namespace std;
 #include <fstream>
 #include <Windows.h>
 
-void LinearProbing()
+void LinearProbing(int debug)
 {
-    LinearProbingHashTable* ht = new LinearProbingHashTable();
+    LinearProbingHashTable* ht = new LinearProbingHashTable(debug);
 
     string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
@@ -122,7 +122,7 @@ void LinearProbing()
 
 }
 
-void Chained()
+void Chained(int debug)
 {
     string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
     //string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\1000_numbers.txt";
@@ -151,7 +151,7 @@ void Chained()
 
     ULARGE_INTEGER v_ui;
     __int64 v_right, v_left, v_res;
-    Hash* ht = new Hash(limit);
+    Hash* ht = new Hash(limit, debug);
     //list<int>* result = NULL;
     //size_t info;
     HashNode* hn = NULL;
@@ -230,7 +230,7 @@ void Chained()
 
 }
 
-void DoubleHash()
+void DoubleHash(int debug)
 {
 
     string pathFile = "C:\\Users\\rdeva\\source\\repos\\roddeval\\ms549_hash_table_rod_devalcourt\\100_numbers.txt";
@@ -260,7 +260,7 @@ void DoubleHash()
 
     ULARGE_INTEGER v_ui;
     __int64 v_right, v_left, v_res;
-    DoubleHashedHashTable* ht = new DoubleHashedHashTable(limit);
+    DoubleHashedHashTable* ht = new DoubleHashedHashTable(limit, debug);
     // int i = 1;
     HashNode* hn = NULL;
     if (file.is_open())
@@ -342,16 +342,18 @@ void DoubleHash()
 
 int main()
 {
+    int debug = 0;
+
     cout << "chained" << endl;
 
-    Chained();
+    Chained(debug);
 
     cout << "double hash" << endl;
-    DoubleHash();
+    DoubleHash(debug);
 
     cout << "linear probing" << endl;
 
-    LinearProbing();
+    LinearProbing(debug);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
