@@ -1,17 +1,52 @@
 chained
 100 numbers
-start time: 10/11/2021 18:9:23.469
-stop time: 10/11/2021 18:9:23.472
-Elapsed time: 0:0:0.3
+start time: 10/11/2021 14:57:29.224
+stop time: 10/11/2021 14:57:29.226
+Elapsed time: 0:0:0.2
+
+1000 numbers
+start time: 10/11/2021 15:0:0.867
+stop time: 10/11/2021 15:0:0.886
+Elapsed time: 0:0:0.19
+
+10000 numbers
+start time: 10/11/2021 15:8:4.641
+stop time: 10/11/2021 15:8:4.822
+Elapsed time: 0:0:0.181
+-----------------------------------------------------
 
 double hash
 100 numbers
-start time: 10/11/2021 18:9:23.472
-stop time: 10/11/2021 18:9:23.515
-Elapsed time: 0:0:0.43
+start time: 10/11/2021 17:24:6.277
+stop time: 10/11/2021 17:24:6.321
+Elapsed time: 0:0:0.44
+
+1000 numbers
+start time: 10/11/2021 17:27:20.911
+stop time: 10/11/2021 17:27:20.972
+Elapsed time: 0:0:0.61
+
+10000 numbers
+start time: 10/11/2021 17:29:35.202
+stop time: 10/11/2021 17:29:35.811
+Elapsed time: 0:0:0.609
+-----------------------------------------------------
 
 linear probing
+
 100 numbers
-start time: 10/11/2021 18:9:23.518
-stop time: 10/11/2021 18:9:23.521
-Elapsed time: 0:0:0.3
+start time: 10/11/2021 11:40:14.957
+stop time: 10/11/2021 11:40:15.13
+Elapsed time: 0:0:0.56
+
+1000 numbers
+start time: 10/11/2021 11:41:57.584
+stop time: 10/11/2021 11:41:58.263
+Elapsed time: 0:0:0.679
+
+10000 numbers
+start time: 10/11/2021 11:47:44.762
+stop time: 10/11/2021 11:47:44.942
+Elapsed time: 0:0:0.180
+
+-----------------------------------------------------
