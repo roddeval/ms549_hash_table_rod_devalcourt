@@ -1,5 +1,5 @@
 10000 numbers
-start time: 10/11/2021 11:43:38.353
+start time: 10/11/2021 11:47:44.762
 key = 2 value = 2
 key = 3 value = 3
 key = 9 value = 9
@@ -10000,5 +10000,5 @@ key = 19991 value = 19991
 key = 19992 value = 19992
 key = 19993 value = 19993
 key = 19995 value = 19995
-stop time: 10/11/2021 11:43:38.697
-Elapsed time: 0:0:0.344
+stop time: 10/11/2021 11:47:44.942
+Elapsed time: 0:0:0.180
